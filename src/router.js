@@ -9,6 +9,11 @@ import UserLogin from './components/authentification/UserLogin.vue';
 import UserRegister from './components/authentification/UserRegister.vue';
 import AboutPage from './components/AboutPage.vue';
 
+// Import des composants Todo
+import TodoList from './components/todos/ListTodo.vue';
+import AddTodo from './components/todos/CreateTodo.vue';
+import EditTodo from './components/todos/EditTodo.vue'; // Assurez-vous que le chemin est correct
+
 const routes = [
   {
     path: '/',
@@ -56,6 +61,22 @@ const routes = [
     path: '/about',
     name: 'AboutPage',
     component: AboutPage
+  },
+  {
+    path: '/todos',
+    name: 'TodoList',
+    component: TodoList
+  },
+  {
+    path: '/todos/add',
+    name: 'AddTodo',
+    component: AddTodo
+  },
+  {
+    path: '/todos/edit/:id',
+    name: 'EditTodo',
+    component: EditTodo,
+    props: true
   }
 ];
 

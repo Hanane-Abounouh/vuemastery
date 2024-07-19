@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "Fintech 101: Exploring the Basics of Electronic Payments",
-      "body": "Our comprehensive guide will equip you with the tools and insights needed to understand electronic payments in the fintech industry.",
+      "body": "Our comprehensive guide will equip you with the tools and insights needed .",
       "user": 1,
       "image": "https://pagedone.io/asset/uploads/1696244553.png",
       "date": "2022-10-26"
@@ -11,7 +11,7 @@
     {
       "id": "2",
       "title": "From Classroom to Cyberspace: The Growing Influence of EdTech in Fintech",
-      "body": "Discover how educational technology is revolutionizing the fintech sector and enhancing learning experiences.",
+      "body": "Discover how educational technology is revolutionizing .",
       "user": 2,
       "image": "https://pagedone.io/asset/uploads/1696244579.png",
       "date": "2022-08-22"
@@ -19,7 +19,7 @@
     {
       "id": "3",
       "title": "Fintech Solutions for Student Loans: Easing the Burden of Education Debt",
-      "body": "Innovative fintech solutions are making student loans more manageable and accessible for students worldwide.",
+      "body": "Innovative fintech solutions are making .",
       "user": 3,
       "image": "https://pagedone.io/asset/uploads/1696244619.png",
       "date": "2022-09-10"
@@ -67,7 +67,7 @@
     {
       "id": "9",
       "title": "Fintech Solutions Again",
-      "body": "A revisit of some of the most effective fintech solutions and their impact on financial practices.",
+      "body": "AExamining how educational technology continues to impact the fintech industry and its future prospects.",
       "user": 3,
       "image": "https://pagedone.io/asset/uploads/1696244619.png",
       "date": "2023-03-25"
@@ -99,6 +99,32 @@
       "postId": 1,
       "author": "John Smith",
       "body": "I learned a lot from this post."
+    }
+  ],
+  "todos": [
+    {
+      "id": "1c27",
+      "title": "dd2",
+      "userId": 1,
+      "completed": false
+    },
+    {
+      "id": "7b16",
+      "title": "delectus aut autem",
+      "userId": 1,
+      "completed": true
+    },
+    {
+      "id": "943d",
+      "title": "quis ut nam facilis et officia qui",
+      "userId": 1,
+      "completed": true
+    },
+    {
+      "id": "944",
+      "title": "hh",
+      "userId": 1,
+      "completed": true
     }
   ]
 }

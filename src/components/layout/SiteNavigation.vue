@@ -17,7 +17,10 @@
         <router-link to="/blog" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">Blog</router-link>
         <router-link to="/about" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">About</router-link>
 
-      
+        <router-link
+                to="/todos"
+               class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600" >Todos
+              </router-link>
           <router-link to="/create" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">Create Post</router-link>
             <router-link  to="/user-posts" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">My Posts</router-link>
 
