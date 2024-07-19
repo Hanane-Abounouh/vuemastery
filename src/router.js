@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from './components/HomePage.vue';
 import BlogPage from './components/posts/BlogPage.vue';
-import PostDetail from './components/posts/PostDetail.vue'; // Assurez-vous de ce chemin
+import PostDetail from './components/posts/PostDetail.vue'; // Assurez-vous que le chemin est correct
 import CreatePost from './components/posts/CreatePost.vue';
 import EditPost from './components/posts/EditPost.vue';
 import UserPosts from './components/posts/UserPosts.vue';

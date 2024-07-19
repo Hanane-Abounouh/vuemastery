@@ -1,79 +1,66 @@
 <template>
-  <div class="py-12 bg-gray-100">
-    <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-6">
-      <!-- Article Details -->
-      <div class="mb-8">
-        <img :src="post.image" :alt="post.title" class="w-full h-64 object-cover rounded-lg mb-6"/>
-        <h1 class="text-3xl font-bold text-gray-900 mb-4">{{ post.title }}</h1>
-        <p class="text-gray-700 mb-6">{{ post.body }}</p>
-        <p class="text-gray-500 text-sm">Published on {{ post.date }} by User ID {{ post.id }}</p>
-      </div>
-
-      <!-- Comments Section -->
-      <div class="mt-8">
-        <h2 class="text-2xl font-bold mb-4">Comments</h2>
-        <div v-if="comments.length > 0">
-          <div v-for="comment in comments" :key="comment.id" class="border-t border-gray-300 pt-4">
-            <p class="text-gray-800 font-semibold">{{ comment.author }}</p>
-            <p class="text-gray-600">{{ comment.text }}</p>
+  <div id="app">
+    <div class="relative h-[400px] mt-24 overflow-hidden bg-[url('https://www.shutterstock.com/image-photo/flat-lay-top-view-womens-260nw-1123748807.jpg')] bg-cover bg-[50%] bg-no-repeat">
+      <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black/60 bg-fixed">
+        <div class="flex h-full items-center justify-center">
+          <div class="px-6 text-center text-white md:px-12">
+            <h1 class="mb-6 text-5xl font-bold">Welcome to Blog</h1>
+            <h3 class="mb-8 text-3xl font-bold">📑🖍️👇🏻</h3>
           </div>
         </div>
-        <p v-else class="text-gray-500">No comments yet.</p>
-      </div>
-
-      <!-- Add Comment -->
-      <div class="mt-8">
-        <h2 class="text-2xl font-bold mb-4">Add a Comment</h2>
-        <form @submit.prevent="addComment" class="flex flex-col">
-          <textarea v-model="newCommentText" placeholder="Write your comment here..." rows="4" class="p-2 border border-gray-300 rounded-lg mb-4"></textarea>
-          <button type="submit" class="bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700">Add Comment</button>
-        </form>
       </div>
     </div>
+
+    <section class="py-24 mb-28 mt-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="font-manrope text-4xl font-bold text-gray-900 text-center mb-14">Our Popular Blogs</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            v-for="(post, index) in posts"
+            :key="index"
+            class="group cursor-pointer border border-gray-300 rounded-2xl p-5 transition-all duration-300 hover:border-indigo-600"
+          >
+            <div class="flex items-center mb-6">
+              <img :src="post.image" :alt="post.title" class="rounded-lg h-52 w-full" />
+            </div>
+            <div class="block">
+              <span class="text-sm text-gray-600">{{ post.date }}</span>
+              <h4 class="text-gray-900 font-medium leading-8 mb-4">{{ post.title }}</h4>
+              <p class="text-gray-500 leading-6 mb-8">{{ post.body }}</p>
+              <div class="flex items-center justify-between mb-2 font-medium">
+                <h6 class="text-sm text-gray-500">By User ID {{ post.userId }}</h6>
+                <router-link :to="{ name: 'PostDetail', params: { id: post.id } }" class="cursor-pointer text-ms text-indigo-600 font-semibold">Read more..</router-link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
-import { getPostById, getCommentsByPostId, addCommentToPost } from '../../services/postService';
+import axios from 'axios';
+
+const API_URL = 'http://localhost:3000';
 
 export default {
   data() {
     return {
-      post: null,
-      comments: [],
-      newCommentText: ''
+      posts: []
     };
   },
   async created() {
-    const postId = this.$route.params.id;
     try {
-      this.post = await getPostById(postId);
-      this.comments = await getCommentsByPostId(postId);
+      const response = await axios.get(`${API_URL}/posts`);
+      this.posts = response.data;
     } catch (error) {
-      console.error('Error fetching post or comments:', error);
-    }
-  },
-  methods: {
-    async addComment() {
-      if (this.newCommentText.trim()) {
-        try {
-          const newComment = {
-            text: this.newCommentText,
-            author: 'Anonymous', // You may replace this with the actual user name
-            postId: this.post.id
-          };
-          await addCommentToPost(newComment);
-          this.comments.push(newComment);
-          this.newCommentText = '';
-        } catch (error) {
-          console.error('Error adding comment:', error);
-        }
-      }
+      console.error('Error fetching posts:', error);
     }
   }
 };
 </script>
 
 <style scoped>
-/* Add custom styles here if needed */
+/* Add your styles here if needed */
 </style>

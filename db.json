@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Fintech 101: Exploring the Basics of Electronic Payments",
       "body": "Our comprehensive guide will equip you with the tools and insights needed to understand electronic payments in the fintech industry.",
       "user": 1,
@@ -9,7 +9,7 @@
       "date": "2022-07-15"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "From Classroom to Cyberspace: The Growing Influence of EdTech in Fintech",
       "body": "Discover how educational technology is revolutionizing the fintech sector and enhancing learning experiences.",
       "user": 2,
@@ -17,7 +17,7 @@
       "date": "2022-08-22"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Fintech Solutions for Student Loans: Easing the Burden of Education Debt",
       "body": "Innovative fintech solutions are making student loans more manageable and accessible for students worldwide.",
       "user": 3,
@@ -25,7 +25,7 @@
       "date": "2022-09-10"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Another Fintech Article",
       "body": "Our comprehensive guide will equip you with additional tools and insights needed to understand more about fintech.",
       "user": 1,
@@ -33,7 +33,7 @@
       "date": "2022-10-01"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Yet Another Fintech Article",
       "body": "This article delves into the latest trends and developments in the fintech industry.",
       "user": 2,
@@ -41,7 +41,7 @@
       "date": "2022-11-15"
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "More Fintech Solutions",
       "body": "Exploring more fintech solutions and their applications in various financial scenarios.",
       "user": 3,
@@ -49,7 +49,7 @@
       "date": "2022-12-05"
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Fintech 101 Again",
       "body": "Our updated guide on fintech basics provides further insights and recent developments in the field.",
       "user": 1,
@@ -57,7 +57,7 @@
       "date": "2023-01-20"
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "EdTech in Fintech Again",
       "body": "Examining how educational technology continues to impact the fintech industry and its future prospects.",
       "user": 2,
@@ -65,42 +65,41 @@
       "date": "2023-02-18"
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Fintech Solutions Again",
       "body": "A revisit of some of the most effective fintech solutions and their impact on financial practices.",
       "user": 3,
       "image": "https://pagedone.io/asset/uploads/1696244619.png",
       "date": "2023-03-25"
-    },
-    {
-      "id": 10,
-      "title": "hjkjk",
-      "body": "yhjkooj",
-      "user": 1,
-      "image": "https://images.squarespace-cdn.com/content/v1/57263bf8f8baf385ff61bb09/1535668320137-NZQPOXCGLFT34I9E4Z1E/Screen+Shot+2018-08-30+at+6.17.10+PM.png",
-      "date": "2024-07-20"
-    },
-    {
-      "id": 11,
-      "title": "ghjkl",
-      "body": "ertyguhj",
-      "user": 1,
-      "image": "https://previews.123rf.com/images/vectorplusb/vectorplusb1907/vectorplusb190700007/127029170-new-post-3d-text-sticker-for-video-blog-vlogging-social-media-content-vector-illustration-design.jpg",
-      "date": "2024-07-12"
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Harsh C."
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "John D."
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Alexa H."
     }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "postId": 1,
+      "author": "Jane Doe",
+      "body": "Great article on fintech!"
+    },
+    {
+      "id": "2",
+      "postId": 1,
+      "author": "John Smith",
+      "body": "I learned a lot from this post."
+    }
+    
   ]
 }
