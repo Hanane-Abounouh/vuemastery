@@ -1,4 +1,3 @@
-<!-- src/components/authentification/UserLogin.vue -->
 <template>
   <div class="flex justify-center items-center min-h-screen bg-gray-100">
     <div class="bg-white px-10 py-8 rounded-xl shadow-xl max-w-sm w-full">
@@ -34,6 +33,7 @@
 
 <script>
 import authService from '../../services/authService';
+import store from '../../store';
 
 export default {
   data() {
@@ -46,15 +46,21 @@ export default {
   methods: {
     async handleLogin() {
       try {
-        const response = await authService.login({
+        await authService.login({
           email: this.email,
           password: this.password
         });
-        console.log(response); // Exemple d'utilisation
+        console.log(`Token generated: ${localStorage.getItem('authToken')}`); // Affiche le token généré dans la console
         this.$router.push('/'); // Redirection vers la HomePage après la connexion
       } catch (error) {
         this.error = 'Erreur lors de la connexion.';
+        console.error(error); // Affiche l'erreur dans la console
       }
+    }
+  },
+  computed: {
+    isAuthenticated() {
+      return store.isAuthenticated;
     }
   }
 }

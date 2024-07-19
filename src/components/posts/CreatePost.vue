@@ -12,10 +12,6 @@
             <label for="body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
             <textarea v-model="newPost.body" id="body" rows="8" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type the body" required></textarea>
           </div>
-          <div>
-            <label for="user" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User ID</label>
-            <input v-model="newPost.user" type="number" id="user" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type the user ID" required />
-          </div>
           <div class="sm:col-span-2">
             <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image URL</label>
             <input v-model="newPost.image" type="url" id="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type the image URL" />
@@ -34,7 +30,7 @@
 </template>
 
 <script>
-import { createPost } from '../../services/postService';
+import { createPost as createPostService } from '../../services/postService';
 
 export default {
   name: 'CreatePost',
@@ -43,7 +39,6 @@ export default {
       newPost: {
         title: '',
         body: '',
-        user: 1, // Default user ID (change as needed)
         image: '',
         date: new Date().toISOString().split('T')[0] // Default to today's date
       }
@@ -51,20 +46,28 @@ export default {
   },
   methods: {
     async createPost() {
-      // URL par défaut de l'image
       const defaultImageUrl = 'https://previews.123rf.com/images/vectorplusb/vectorplusb1907/vectorplusb190700007/127029170-new-post-3d-text-sticker-for-video-blog-vlogging-social-media-content-vector-illustration-design.jpg';
 
-      // Si l'image n'est pas fournie, utilisez l'image par défaut
+      // If no image is provided, use the default image
       if (!this.newPost.image) {
         this.newPost.image = defaultImageUrl;
       }
 
+      // Add the current user's ID to the new post
+      this.newPost.user = this.userId;
+
       try {
-        await createPost(this.newPost);
+        await createPostService(this.newPost);
         this.$router.push('/blog');
       } catch (error) {
         console.error('Error creating post:', error);
       }
+    }
+  },
+  computed: {
+    userId() {
+      // Get the user ID from localStorage
+      return parseInt(localStorage.getItem('userId')) || 1;
     }
   }
 };

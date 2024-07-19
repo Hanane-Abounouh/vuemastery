@@ -28,7 +28,7 @@
               <h4 class="text-gray-900 font-medium leading-8 mb-4">{{ post.title }}</h4>
               <p class="text-gray-500 leading-6 mb-8">{{ post.body }}</p>
               <div class="flex items-center justify-between mb-2 font-medium">
-                <h6 class="text-sm text-gray-500">By User ID {{ post.userId }}</h6>
+              
                 <router-link :to="{ name: 'PostDetail', params: { id: post.id } }" class="cursor-pointer text-ms text-indigo-600 font-semibold">Read more..</router-link>
               </div>
             </div>

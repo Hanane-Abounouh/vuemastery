@@ -17,38 +17,38 @@
         <router-link to="/blog" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">Blog</router-link>
         <router-link to="/about" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">About</router-link>
 
-        <router-link
-                to="/todos"
-               class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600" >Todos
-              </router-link>
-          <router-link to="/create" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">Create Post</router-link>
-            <router-link  to="/user-posts" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">My Posts</router-link>
+        <!-- Liens visibles uniquement lorsqu'un utilisateur est connecté -->
+        <router-link v-if="isAuthenticated" to="/todos" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">Todos</router-link>
+        <router-link v-if="isAuthenticated" to="/create" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">Create Post</router-link>
+        <router-link v-if="isAuthenticated" to="/user-posts" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">My Posts</router-link>
 
         <div class="flex flex-col block w-full font-medium border-t border-gray-200 md:hidden">
           <router-link v-if="!isAuthenticated" to="/login" class="w-full py-3 font-bold text-center text-pink-500">Login</router-link>
           <router-link v-if="!isAuthenticated" to="/register" class="relative inline-block w-full ml-10 px-5 py-3 text-sm leading-none text-center text-white bg-indigo-700 font-bold">Get Started</router-link>
-             <div v-if="isAuthenticated" class="flex items-center space-x-4">
-          <router-link to="/" @click="logout" class="w-full py-3 font-bold text-center text-pink-500">Logout</router-link>
-        </div>
+          <div v-if="isAuthenticated" class="flex items-center space-x-4">
+            <button @click="handleLogout" class="w-full py-3 font-bold text-center text-pink-500">Logout</button>
+          </div>
         </div>
       </nav>
 
       <div class="hidden md:flex md:items-end md:flex-row">
         <router-link v-if="!isAuthenticated" to="/login" class="relative z-40 px-6 py-3 mr-0 text-lg font-bold text-pink-500 md:px-5 sm:mr-3 md:mt-0 transition-all duration-300 hover:shadow-xl">Login</router-link>
         <router-link v-if="!isAuthenticated" to="/register" class="relative z-40 inline-block w-auto h-full ml-10 px-8 py-4 text-lg font-bold leading-none text-white transition-all duration-300 bg-indigo-700 rounded shadow-md lg:bg-white border lg:text-indigo-700 hover:shadow-xl">Get Started</router-link>
-   
-        <router-link v-if="isAuthenticated" to="/" @click="logout" class="relative z-40 px-6 py-3  mr-0 text-lg font-bold text-pink-500 md:px-5 sm:mr-3 md:mt-0 transition-all duration-300 hover:shadow-xl">Logout</router-link>
+        <button v-if="isAuthenticated" @click="handleLogout" class="relative z-40 inline-block w-auto h-full ml-10 px-8 py-4 text-lg font-bold leading-none text-white transition-all duration-300 bg-indigo-700 rounded shadow-md lg:bg-white border lg:text-indigo-700 hover:shadow-xl">Logout</button>
       </div>
 
-      <div @click="toggleNav" id="nav-mobile-btn" :class="navOpen ? 'close' : ''"  class="absolute top-0 right-0 z-50 block w-6 mt-8 mr-10 cursor-pointer select-none md:hidden sm:mt-10">
-     <span class="block w-full h-1 mt-2 duration-200 transform bg-gray-800 rounded-full sm:mt-1"></span>
-                <span class="block w-full h-1 mt-1 duration-200 transform bg-gray-800 rounded-full"></span>
+      <div @click="toggleNav" id="nav-mobile-btn" :class="navOpen ? 'close' : ''" class="absolute top-0 right-0 z-50 block w-6 mt-8 mr-10 cursor-pointer select-none md:hidden sm:mt-10">
+        <span class="block w-full h-1 mt-2 duration-200 transform bg-gray-800 rounded-full sm:mt-1"></span>
+        <span class="block w-full h-1 mt-1 duration-200 transform bg-gray-800 rounded-full"></span>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+import store from '../../store';
+import authService from '../../services/authService';
+
 export default {
   name: 'SiteNavigation',
   data() {
@@ -63,16 +63,16 @@ export default {
       ];
     },
     isAuthenticated() {
-      return !!localStorage.getItem('authToken');
+      return store.isAuthenticated;
     }
   },
   methods: {
+    handleLogout() {
+      authService.logout();
+      this.$router.push('/login');
+    },
     toggleNav() {
       this.navOpen = !this.navOpen;
-    },
-    logout() {
-      localStorage.removeItem('authToken');
-      this.$router.push('/');
     }
   }
 }

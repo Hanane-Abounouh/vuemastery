@@ -76,15 +76,33 @@
   "users": [
     {
       "id": "1",
-      "name": "Harsh C."
+      "name": "Harsh C.",
+      "email": "Harsh@email.com",
+      "password": "12345678"
     },
     {
       "id": "2",
-      "name": "John D."
+      "name": "John D.",
+      "email": "Harsh@email.com",
+      "password": "12345678"
     },
     {
       "id": "3",
-      "name": "Alexa H."
+      "name": "Alexa H.",
+      "email": "Harsh@email.com",
+      "password": "12345678"
+    },
+    {
+      "id": "9dd4",
+      "name": "hanane",
+      "email": "hanane@email.com",
+      "password": "12345678"
+    },
+    {
+      "id": "b5bb",
+      "name": "sara",
+      "email": "sara@email.com",
+      "password": "12345678"
     }
   ],
   "comments": [
@@ -99,6 +117,12 @@
       "postId": 1,
       "author": "John Smith",
       "body": "I learned a lot from this post."
+    },
+    {
+      "id": "ac17",
+      "text": "good",
+      "author": "Anonymous",
+      "postId": "9"
     }
   ],
   "todos": [
