@@ -96,7 +96,7 @@
               <p class="text-gray-500 leading-6 mb-8">{{ post.body }}</p>
               <div class="flex items-center justify-between mb-2 font-medium">
                 <h6 class="text-sm text-gray-500">By {{ getUserName(post.user) }}</h6>
-                <a :href="`/post/${post.id}`" class="cursor-pointer text-ms text-indigo-600 font-semibold">Read more..</a>
+                <router-link :to="{ name: 'PostDetail', params: { id: post.id } }" class="cursor-pointer text-ms text-indigo-600 font-semibold">Read more..</router-link>
               </div>
             </div>
           </div>

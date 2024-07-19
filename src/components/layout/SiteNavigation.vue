@@ -18,8 +18,8 @@
         <router-link to="/about" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">About</router-link>
 
       
-          <router-link to="/create" class="text-pink-500 font-semibold">Create Post</router-link>
-            <router-link  to="/user-posts" class="text-pink-500 font-semibold">My Posts</router-link>
+          <router-link to="/create" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">Create Post</router-link>
+            <router-link  to="/user-posts" class="mr-0 font-bold duration-100 md:mr-3 lg:mr-8 transition-color hover:text-indigo-600">My Posts</router-link>
 
         <div class="flex flex-col block w-full font-medium border-t border-gray-200 md:hidden">
           <router-link v-if="!isAuthenticated" to="/login" class="w-full py-3 font-bold text-center text-pink-500">Login</router-link>

@@ -50,3 +50,24 @@ export async function deletePost(id) {
     throw error;
   }
 }
+
+// Assurez-vous d'ajouter les fonctions pour les commentaires si elles ne sont pas encore présentes
+export async function getCommentsByPostId(postId) {
+  try {
+    const response = await axios.get(`${API_URL}/${postId}/comments`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching comments for post ID ${postId}:`, error);
+    throw error;
+  }
+}
+
+export async function addCommentToPost(comment) {
+  try {
+    const response = await axios.post(`${API_URL}/${comment.postId}/comments`, comment);
+    return response.data;
+  } catch (error) {
+    console.error('Error adding comment:', error);
+    throw error;
+  }
+}
